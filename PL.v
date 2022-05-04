@@ -15,7 +15,7 @@ Import PropExtensionality.
 Theorem Impl1_01 : ∀ P Q : Prop, 
 
   (P → Q) = (¬P ∨ Q). 
-  Proof. intros P Q.
+Proof. intros P Q.
   apply propositional_extensionality.
   split.
   apply imply_to_or.
@@ -4430,6 +4430,8 @@ End No5.
 
 Module No9.
 
+Import No2.
+
 (* Df 9.01, 9.02,: Definition of negation on forall and negation on existence *)
 Theorem n9_01 : forall P : Prop -> Prop, ~(forall x : Prop, P x) -> (exists x : Prop, ~(P x)).
 Proof. Admitted.
@@ -4477,9 +4479,12 @@ Proof. Admitted.
 
 (* Proposition 9.12 - 9.15: pure texts *)
 
-(* TODO: First proposition with proofs to fill out *)
 Theorem n9_2 : forall (Phi : Prop -> Prop) (y : Prop), (forall x : Prop, Phi x) -> Phi y.
-Proof. Admitted.
+Proof. intros Phi y.
+  specialize n2_1 with y. intros n2_1a.
+  specialize n9_1 with (fun x : Prop => ~ Phi x \/ Phi y) y. intros n9_1a. (* ????? *)
+  
+Abort.
 
 Theorem n9_21 : forall (Phi Psi : Prop -> Prop),
   (forall x, Phi x -> Psi x) -> (forall x, Phi x) -> (forall x, Psi x).
@@ -4527,3 +4532,4 @@ Proof. Admitted.
 
 Theorem n9_371 : forall (Phi : Prop -> Prop) (P : Prop), (exists x : Prop, Phi x) \/ P -> P \/ (exists x : Prop, Phi x).
 Proof. Admitted.
+
