@@ -13,6 +13,7 @@ Import PropExtensionality.
   (*We first give the axioms of Principia in *1.*)
 
 Theorem Impl1_01 : ∀ P Q : Prop, 
+
   (P → Q) = (¬P ∨ Q). 
   Proof. intros P Q.
   apply propositional_extensionality.
@@ -88,6 +89,15 @@ Qed. *)
 Theorem Sum1_6 : ∀ P Q R : Prop, 
   (Q → R) → (P ∨ Q → P ∨ R). (*Summation*)
 Proof. intros P Q R.
+  intros QR [HP | HQ].
+  - left. apply HP.
+  - right. apply QR in HQ. apply HQ.
+Qed.
+
+
+(* Theorem Sum1_6 : ∀ P Q R : Prop, 
+  (Q → R) → (P ∨ Q → P ∨ R). (*Summation*)
+Proof. intros P Q R.
   specialize imply_and_or2 with Q R P.
   intros imply_and_or2a.
   replace (P∨Q) with (Q∨P).
@@ -97,7 +107,7 @@ Proof. intros P Q R.
   apply or_comm.
   apply propositional_extensionality.
   apply or_comm.
-Qed.
+Qed. *)
 
 Ltac MP H1 H2 :=
   match goal with 
@@ -453,6 +463,10 @@ Proof. intros P Q R.
   MP Syll2_06b n2_3a.
   exact Syll2_06b.
 Qed.
+
+(* Theorem Abb2_33 : ∀ P Q R : Prop,
+  (P ∨ Q ∨ R) = ((P ∨ Q) ∨ R). 
+Proof. intros P Q R. rewrite -> n2_32. *)
 
 Theorem Abb2_33 : ∀ P Q R : Prop,
   (P ∨ Q ∨ R) = ((P ∨ Q) ∨ R). 
@@ -1521,12 +1535,16 @@ Import No3.
 
 Theorem Equiv4_01 : ∀ P Q : Prop, 
   (P ↔ Q) = ((P → Q) ∧ (Q → P)). 
+  Proof. intros. reflexivity. Qed.
+
+(* Theorem Equiv4_01 : ∀ P Q : Prop, 
+  (P ↔ Q) = ((P → Q) ∧ (Q → P)). 
   Proof. intros P Q.
   apply propositional_extensionality.
   specialize iff_to_and with P Q.
   intros iff_to_and.
   exact iff_to_and.
-  Qed.
+  Qed. *)
   (*This is a notational definition in Principia;
   it is used to switch between "↔" and "→∧←".*)
 
@@ -4409,3 +4427,43 @@ Theorem n5_75 : ∀ P Q R : Prop,
 Qed.
 
 End No5.
+
+Module No9.
+
+(* Df 9.01, 9.02,: Definition of negation on forall and negation on existence *)
+Theorem n9_01 : forall P : Prop -> Prop, ~(forall x : Prop, P x) -> (exists x : Prop, ~(P x)).
+Proof. Admitted.
+
+Theorem n9_02 : forall P : Prop -> Prop, ~(exists x : Prop, P x) -> (forall x : Prop, ~(P x)).
+Proof. Admitted.
+
+(* Df 9.011, 9.021: Definition to eliminate brackets *)
+
+(* Df 9.03 - 9.08: definition of disjunctions *)
+
+Theorem n9_03 : forall (Phi : Prop -> Prop) (P : Prop), 
+  (forall x : Prop, Phi x) \/ P -> forall x : Prop, Phi x \/ P.
+Proof. Admitted.
+
+Theorem n9_04 : forall (Phi : Prop -> Prop) (P : Prop), 
+  (P \/ forall x : Prop, Phi x) -> forall x: Prop, P \/ Phi x.
+Proof. Admitted.
+
+Theorem n9_05 : forall (Phi : Prop -> Prop) (P : Prop), 
+    (exists x : Prop, Phi x) \/ P -> exists x : Prop, Phi x \/ P.
+Proof. Admitted.
+
+Theorem n9_06 : forall (Phi : Prop -> Prop) (P : Prop), 
+  (P \/ exists x : Prop, Phi x) -> exists x: Prop, P \/ Phi x.
+Proof. Admitted.
+
+Theorem n9_07 : forall (Phi Psi : Prop -> Prop),
+  (forall x : Prop, Phi x) \/ (exists y : Prop, Psi y)
+  -> forall x : Prop, exists y : Prop, Phi x \/ Psi y.
+Proof. Admitted.
+
+Theorem n9_08 : forall (Phi Psi : Prop -> Prop),
+  (exists y, Psi y) \/ (forall x : Prop, Phi x)
+  -> forall x : Prop, exists y : Prop, Psi y \/ Phi x.
+Proof. Admitted.
+
