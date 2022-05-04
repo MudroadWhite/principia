@@ -4467,3 +4467,63 @@ Theorem n9_08 : forall (Phi Psi : Prop -> Prop),
   -> forall x : Prop, exists y : Prop, Psi y \/ Phi x.
 Proof. Admitted.
 
+(* ************************ *)
+
+Theorem n9_1 : forall (Phi : Prop -> Prop) (x : Prop), Phi x -> exists z : Prop, Phi z.
+Proof. Admitted.
+
+Theorem n9_11 : forall (Phi : Prop -> Prop) (x y : Prop), Phi x \/ Phi y -> exists z : Prop, Phi z.
+Proof. Admitted.
+
+(* Proposition 9.12 - 9.15: pure texts *)
+
+(* TODO: First proposition with proofs to fill out *)
+Theorem n9_2 : forall (Phi : Prop -> Prop) (y : Prop), (forall x : Prop, Phi x) -> Phi y.
+Proof. Admitted.
+
+Theorem n9_21 : forall (Phi Psi : Prop -> Prop),
+  (forall x, Phi x -> Psi x) -> (forall x, Phi x) -> (forall x, Psi x).
+Proof. Admitted.
+
+Theorem n9_22 : forall (Phi Psi : Prop -> Prop),
+  (forall x, Phi x -> Psi x) -> (exists x, Phi x) -> (exists x, Psi x).
+Proof. Admitted.
+
+Theorem n9_23 : forall (Phi : Prop -> Prop), (forall x : Prop, Phi x) -> (forall x : Prop, Phi x).
+Proof. Admitted.
+
+Theorem n9_24 : forall (Phi : Prop -> Prop), (exists x : Prop, Phi x) -> (exists x : Prop, Phi x).
+Proof. Admitted.
+
+Theorem n9_25 : forall (Phi : Prop -> Prop) (P : Prop), (forall x : Prop, P \/ Phi x) -> P \/ (forall x : Prop, Phi x).
+Proof. Admitted.
+
+Theorem n9_3 : forall (Phi : Prop -> Prop), (forall x : Prop, Phi x) \/ (forall x : Prop, Phi x) -> (forall x : Prop, Phi x).
+Proof. Admitted.
+
+Theorem n9_31 : forall (Phi : Prop -> Prop), (exists x : Prop, Phi x) \/ (exists x : Prop, Phi x) -> (exists x : Prop, Phi x).
+Proof. Admitted.
+
+Theorem n9_32 : forall (Phi : Prop -> Prop) (Q : Prop), Q -> (forall x : Prop, Phi x) \/ Q.
+Proof. Admitted.
+
+Theorem n9_33 : forall (Phi : Prop -> Prop) (Q : Prop), Q -> (exists x : Prop, Phi x) \/ Q.
+Proof. Admitted.
+
+Theorem n9_34 : forall (Phi : Prop -> Prop) (P : Prop), (forall x : Prop, Phi x) -> P \/ (forall x : Prop, Phi x).
+Proof. Admitted.
+
+Theorem n9_35 : forall (Phi : Prop -> Prop) (P : Prop), (exists x : Prop, Phi x) -> P \/ (exists x : Prop, Phi x).
+Proof. Admitted.
+
+Theorem n9_36 : forall (Phi : Prop -> Prop) (P : Prop), P \/ (forall x : Prop, Phi x) -> (forall x : Prop, Phi x) \/ P.
+Proof. Admitted.
+
+Theorem n9_361 : forall (Phi : Prop -> Prop) (P : Prop), (forall x : Prop, Phi x) \/ P -> P \/ (forall x : Prop, Phi x).
+Proof. Admitted.
+
+Theorem n9_37 : forall (Phi : Prop -> Prop) (P : Prop), P \/ (exists x : Prop, Phi x) -> (exists x : Prop, Phi x) \/ P.
+Proof. Admitted.
+
+Theorem n9_371 : forall (Phi : Prop -> Prop) (P : Prop), (exists x : Prop, Phi x) \/ P -> P \/ (exists x : Prop, Phi x).
+Proof. Admitted.
