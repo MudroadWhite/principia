@@ -4533,3 +4533,54 @@ Proof. Admitted.
 Theorem n9_371 : forall (Phi : Prop -> Prop) (P : Prop), (exists x : Prop, Phi x) \/ P -> P \/ (exists x : Prop, Phi x).
 Proof. Admitted.
 
+Theorem n9_4 : forall (Phi : Prop -> Prop) (P Q : Prop), P \/ Q \/ (forall x : Prop, Phi x)
+  -> Q \/ P \/ (forall x : Prop, Phi x).
+Proof. Admitted.
+
+Theorem n9_401 : forall (Phi : Prop -> Prop) (P Q : Prop), P \/ Q \/ (exists x : Prop, Phi x)
+  -> Q \/ P \/ (exists x : Prop, Phi x).
+Proof. Admitted.
+
+Theorem n9_41 : forall (Phi : Prop -> Prop) (P R : Prop), P \/ (forall x : Prop, Phi x) \/ R
+  -> (forall x : Prop, Phi x) \/ P \/ R.
+Proof. Admitted.
+
+Theorem n9_411 : forall (Phi : Prop -> Prop) (P R : Prop), P \/ (exists x : Prop, Phi x) \/ R
+  -> (exists x : Prop, Phi x) \/ P \/ R.
+Proof. Admitted.
+
+Theorem n9_42 : forall (Phi : Prop -> Prop) (Q R : Prop), (forall x : Prop, Phi x) \/ Q \/ R
+  -> Q \/ (forall x : Prop, Phi x) \/ R.
+Proof. Admitted.
+
+Theorem n9_421 : forall (Phi : Prop -> Prop) (Q R : Prop), (exists x : Prop, Phi x) \/ Q \/ R
+  -> Q \/ (exists x : Prop, Phi x) \/ R.
+Proof. Admitted.
+
+(* TODO: Accuracy in understanding? *)
+Theorem n9_5 : forall (Phi : Prop -> Prop) (P Q : Prop), (P -> Q) 
+  -> (P \/ forall x : Prop, Phi x) -> (Q \/ forall x : Prop, Phi x).
+Proof. Admitted.
+
+Theorem n9_501 : forall (Phi : Prop -> Prop) (P Q : Prop), (P -> Q) 
+  -> (P \/ exists x : Prop, Phi x) -> (Q \/ exists x : Prop, Phi x).
+Proof. Admitted.
+
+Theorem n9_51 : forall (Phi : Prop -> Prop) (P R : Prop), 
+  (P -> forall x : Prop, Phi x) -> P \/ R -> (forall x : Prop, Phi x) \/ R.
+Proof. Admitted.
+
+Theorem n_9_511 : forall (Phi : Prop -> Prop) (P R : Prop), 
+  (P -> exists x : Prop, Phi x) -> P \/ R -> (exists x : Prop, Phi x) \/ R.
+Proof. Admitted.
+
+(* TODO: Accuracy in understanding? *)
+Theorem n_9_52 : forall (Phi : Prop -> Prop) (Q R : Prop), 
+  ((forall x : Prop, Phi x) -> Q) -> (forall x : Prop, Phi x) \/ R -> Q \/ R.
+Proof. Admitted.
+
+Theorem n_9_521 : forall (Phi : Prop -> Prop) (Q R : Prop), 
+  ((exists x : Prop, Phi x) -> Q) -> (exists x : Prop, Phi x) \/ R -> Q \/ R.
+Proof. Admitted.
+
+(* Thm 9.6, 9.61 - 9.63: pure text propositions *)
